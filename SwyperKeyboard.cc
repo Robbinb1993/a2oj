@@ -22,7 +22,7 @@ void solve(const int idx) {
       if (now != res[(int)res.length() - 1])
          res += now;
    }//for
-   solve(idx + 1);
+   solve(idx + 1);//test
 }//solve
 
 bool check(const string& S) {
