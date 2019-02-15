@@ -8,21 +8,22 @@ char getChar[10][10];
 char line[110], s[110];
 string res;
 
-void solve(const int idx) {
-   char curr = line[idx];
-   char nxt = line[idx + 1];
-   if (!line[idx + 1])
-      return;
-   const double dx = coord[nxt - 'A'].first - coord[curr - 'A'].first;
-   const double dy = coord[nxt - 'A'].second - coord[curr - 'A'].second;
-   for (int i = 1; i <= 20; i++) {
-      double x = coord[curr - 'A'].first + (i / double(20) + eps) * dx;
-      double y = coord[curr - 'A'].second + (i / double(20) + eps) * dy;
-      char now = getChar[(int)(round(x) + eps)][(int)(round(y) + eps)];
-      if (now != res[(int)res.length() - 1])
-         res += now;
-   }//for
-   solve(idx + 1);
+void solve() {
+   int idx = 0;
+   while (line[idx + 1]) {
+      char curr = line[idx];
+      char nxt = line[idx + 1];
+      const double dx = coord[nxt - 'A'].first - coord[curr - 'A'].first;
+      const double dy = coord[nxt - 'A'].second - coord[curr - 'A'].second;
+      for (int i = 1; i <= 20; i++) {
+         double x = coord[curr - 'A'].first + (i / double(20) + eps) * dx;
+         double y = coord[curr - 'A'].second + (i / double(20) + eps) * dy;
+         char now = getChar[(int)(round(x) + eps)][(int)(round(y) + eps)];
+         if (now != res[(int)res.length() - 1])
+            res += now;
+      }//for
+      idx++;
+   }//while
 }//solve
 
 bool check(const string& S) {
@@ -50,7 +51,7 @@ int main() {
       scanf("%d", &N);
       scanf(" %s", line);
       res = line[0];
-      solve(0);
+      solve();
       bool flag = 0;
       for (int i = 0; i < N; i++) {
          scanf(" %s", s);
