@@ -15,7 +15,7 @@ class Input {
 }//Input
 
 class Solver {
-   static final int MAXN = 200000;
+   private static final int MAXN = 200000;
    private int[] primeSum = new int[MAXN];
    private long[] fights = new long[MAXN];
    public Solver() {
