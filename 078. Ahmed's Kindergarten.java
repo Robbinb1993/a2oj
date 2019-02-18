@@ -16,8 +16,8 @@ class Input {
 
 class Solver {
    static final int MAXN = 200000;
-   int[] primeSum = new int[MAXN];
-   long[] fights = new long[MAXN];
+   private int[] primeSum = new int[MAXN];
+   private long[] fights = new long[MAXN];
    public Solver() {
       Sieve();
    }//constructor
